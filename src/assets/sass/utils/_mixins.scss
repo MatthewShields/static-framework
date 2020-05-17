@@ -1,0 +1,166 @@
+/*
+ * Media query to respond to a minimum size (mobile first)
+ */
+
+@mixin resp-min($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+/*
+ * Media query to respond to a maximum size
+ */
+
+@mixin resp-max($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+/*
+ * Output font size in px/rem
+ */
+
+@mixin font-size($px) {
+  font-size: $px + px;
+  font-size: #{$px / 16}rem;
+}
+
+/*
+ * Placeholder mixin for <input>
+ */
+
+@mixin placeholder {
+  $placeholders: ':-webkit-input' ':-moz' '-moz' '-ms-input';
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
+/**
+ * Clearfix
+ */
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+    flex-basis: 0;
+    width: 0;
+    height: 0;
+    order: 1;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+%clearfix {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+    flex-basis: 0;
+    width: 0;
+    height: 0;
+    order: 1;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/**
+ * Positioning
+ */
+
+@mixin center($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if $horizontal and $vertical {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if $horizontal {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if $vertical {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@mixin font-size($sizeValue: $base-font-size) {
+  font-size: ($sizeValue) + px;
+  font-size: ($sizeValue / $base-font-size) + rem;
+}
+
+%section {
+  padding: ($sp-unit * 2) 0;
+}
+
+%container {
+  padding: 0 30px;
+  @media (min-width: $breakpoint-md) {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 90%;
+  }
+}
+
+%border-style {
+  // box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  border: 1px $border-color solid;
+}
+
+/* = Responsive Layouts */
+$fix-mqs: false !default;
+// MIN
+@mixin respond-min($width) {
+  // If we're outputting for a fixed media query set...
+  @if $fix-mqs {
+    // ...and if we should apply these rules...
+    @if $fix-mqs >= $width {
+      // ...output the content the user gave us.
+      @content;
+    }
+  } @else {
+    // Otherwise, output it using a regular media query
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  }
+}
+/* = GRID SYSTEM */
+// LAYOUT
+// Use: (Breakpoint, Top number in fraction, bottom number in fraction)
+@mixin layout($bp, $top: 1, $bottom: 1) {
+  @if $bp > 0 {
+    @include respond-min($bp) {
+      width: calc((#{$top} / #{$bottom}) * 100#{'%'} - #{$gutter});
+    }
+  } @else {
+    width: calc((#{$top} / #{$bottom}) * 100#{'%'} - #{$gutter});
+  }
+}
+// PUSH PULL
+// Use: (Breakpoint, Top number in fraction, bottom number in fraction)
+@mixin pushpull($bp, $top: 1, $bottom: 1, $direction: 'push') {
+  @if $direction == 'push' {
+    $direction: 'left';
+  } @else {
+    $direction: 'right';
+  }
+  @if $bp > 0 {
+    @include respond-min($bp) {
+      margin-#{$direction}: calc(
+        (#{$top} / #{$bottom}) * 100#{'%'} + #{$gutter / 2}
+      );
+    }
+  } @else {
+    margin-#{$direction}: calc((#{$top} / #{$bottom}) * 100#{'%'} + #{$gutter});
+  }
+}

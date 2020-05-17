@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="" />
+    <link rel="canonical" href="{{ LIVE_URL }}{{ canonical }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta name="description" content="{{ description }}" />
+    <meta property="og:image" content="{{ LIVE_URL }}{{ SOCIAL_IMAGE_URL }}" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="{{ TWITTER_SITE }}" />
+    <meta property="og:url" content="{{ LIVE_URL }}{{ canonical }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:image" content="{{ LIVE_URL }}{{ SOCIAL_IMAGE_URL }}" />
+
+    <!-- prettier-ignore -->
+    {% if GA_ID != false %}
+    <script>
+      ;(function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', '{{ GA_ID }}')
+    </script>
+    {% endif %}
+
+    <!-- prettier-ignore -->
+    {% include '../partials/favicons.html' %}
+  </head>
+  <body>
+    <!-- prettier-ignore -->
+    {% if GA_ID != false %}
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NH3BN6Q"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden;"
+      ></iframe
+    ></noscript>
+    {% endif %}
+
+    <!-- prettier-ignore -->
+    {% block content %}{% endblock %}
+
+    <script src="assets/js/all.js"></script>
+  </body>
+</html>

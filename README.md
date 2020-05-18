@@ -82,7 +82,7 @@ Will result in:
 
 ### HTML Templating Framework
 
-Twig has been included as a HTML templating framework. This is completely optional to use, if you wish you can just create a HTML file if you wish.
+Twig has been included as a HTML templating framework. Twig will allow you to use things like if statements and for loops in your html if you require as well as edit things like your header globally. This is completely optional to use, if you wish you can just create a HTML file if you wish.
 
 For help with how to use the JS Twig templating refer to the documentation - https://www.npmjs.com/package/gulp-twig
 

@@ -135,7 +135,7 @@ Then output these variables in the partial HTML as before:
 <div class="card">
   <h3>{{ title }}</h3>
   <p>{{ description }}</p>
-  <a href="{{ link }}">{{ link-text }}</a>
+  <a href="{{ link }}">{{ link_text }}</a>
 </div>
 ```
 

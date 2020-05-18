@@ -114,6 +114,75 @@ Partials
 Here are where you can define portions of code to be included. By default there is a favicons partial.
 ```
 
+### Passing variables to partials
+
+In order to take full advantage of the partials functionality, you will probably need to pass variables to some of them. This can be done very easily using the following example of a 'post card' piece of HTML.
+
+Firstly, define the data that you would want to pass to the partial in your include:
+
+```
+{% include '../partials/example.html' with {
+  'title': 'Post Title',
+  'description': 'Post Description',
+  'link': 'http://example.com',
+  'link_text': 'Read more'
+} %}
+```
+
+Then output these variables in the partial HTML as before:
+
+```html
+<div class="card">
+  <h3>{{ title }}</h3>
+  <p>{{ description }}</p>
+  <a href="{{ link }}">{{ link-text }}</a>
+</div>
+```
+
+#### Creating Optional Variables
+
+If you needed to make these variables optional, for example having an optional link. This can be done by using an if statement just as you would in a PHP build.
+
+If I were to remove the link and link_text data being passed to the previous example:
+
+```
+{% include '../partials/example.html' with {
+  'title': 'Post Title',
+  'description': 'Post Description'
+} %}
+```
+
+The resulting HTML would be:
+
+```html
+<div class="card">
+  <h3>Post Title</h3>
+  <p>Post Description</p>
+  <a href=""></a>
+</div>
+```
+
+However if I were to wrap the \<a\> if an if statement like so:
+
+```html
+<div class="card">
+  <h3>{{ title }}</h3>
+  <p>{{ description }}</p>
+  {% if link and link_text %}
+  <a href="{{ link }}">{{ link_text }}</a>
+  {% endif %}
+</div>
+```
+
+Then we would have our clean outputted HTML code:
+
+```html
+<div class="card">
+  <h3>Post Title</h3>
+  <p>Post Description</p>
+</div>
+```
+
 ### Global Config JSON
 
 For use in the HTML templating language, you can define environment variables to be used by the relevant npm script. These are found in:

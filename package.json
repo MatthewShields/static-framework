@@ -1,7 +1,7 @@
 {
-  "name": "@jr-cologne/create-gulp-starter-kit",
-  "version": "0.10.12-beta",
-  "description": "A simple Gulp 4 Starter Kit for modern web development.",
+  "name": "@matthewshields/static-framework",
+  "version": "0.0.1",
+  "description": "A simple static site framework for creating HTML pages.",
   "keywords": [],
   "scripts": {
     "start": "NODE_ENV=development gulp",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jr-cologne/gulp-starter-kit.git"
+    "url": "https://github.com/MatthewShields/static-framework.git"
   },
-  "author": "JR Cologne",
+  "author": "Matthew Shields",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jr-cologne/gulp-starter-kit/issues"
+    "url": "https://github.com/MatthewShields/static-framework/issues"
   },
-  "homepage": "https://github.com/jr-cologne/gulp-starter-kit",
+  "homepage": "https://github.com/MatthewShields/static-framework/",
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",

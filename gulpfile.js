@@ -76,6 +76,7 @@ gulp.task('pages', () => {
 gulp.task('postcss', function () {
   return gulp
     .src([src_assets_folder + 'sass/**/!(_)*.scss'])
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(
       postcss([require('tailwindcss'), require('postcss-object-fit-images')])
@@ -99,6 +100,7 @@ gulp.task('postcss', function () {
       })
     )
     .pipe(minifyCss())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dist_assets_folder + 'css'))
 })
 

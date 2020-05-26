@@ -209,9 +209,9 @@ By default these settings are included for use in the framework template:
 ```json
 {
   "GA_ID": false,
-  "LIVE_URL": false,
-  "TWITTER_SITE": false,
-  "SOCIAL_IMAGE_URL": false
+  "LIVE_URL": "",
+  "TWITTER_SITE": "",
+  "SOCIAL_IMAGE_URL": ""
 }
 ```
 

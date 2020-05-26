@@ -1,5 +1,5 @@
 {
-  "name": "static-framework",
+  "name": "@matthewshields/static-framework",
   "version": "0.0.1",
   "description": "A simple static site framework for creating HTML pages.",
   "keywords": [],

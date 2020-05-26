@@ -36,6 +36,9 @@
 
     <!-- prettier-ignore -->
     {% include '../partials/favicons.html' %}
+
+    <!-- prettier-ignore -->
+    {% block head_section %}{% endblock %}
   </head>
   <body>
     <!-- prettier-ignore -->
@@ -52,6 +55,10 @@
 
     <!-- prettier-ignore -->
     {% block content %}{% endblock %}
+
+
+    <!-- prettier-ignore -->
+    {% block footer_section %}{% endblock %}
 
     <script src="assets/js/all.js"></script>
   </body>
